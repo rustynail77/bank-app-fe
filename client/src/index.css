@@ -12,7 +12,7 @@ button,input[type='submit'] {
 
 .filter-button {
     position:absolute;
-    right: 10%;
+    right: 20%;
 }
 
 .dropdown {
@@ -29,9 +29,13 @@ button,input[type='submit'] {
 .search-bar input,div,select {
     margin-right: 3%;
     margin-bottom: 2%;
+    
 }
 
 #has_mortgage {
     min-width: 120px !important;
 }
 
+form {
+    vertical-align: middle;
+}

@@ -56,11 +56,11 @@ const SearchBar = (props) => {
         <>
             <Typography variant="h4">Filter Bar</Typography>
             <form onSubmit={handleSubmit}>
-                <TextField type='number' name="balance_from" variant="outlined" label="Balance from" onChange={(e)=>handleChange(e.target)} />
-                <TextField type='number' name="balance_to" variant="outlined" label="Balance to" onChange={(e)=>handleChange(e.target)} />
-                <TextField type='number' name="credit_cards" variant="outlined" label="Number of credit cards" onChange={(e)=>handleChange(e.target)} />
+                <TextField size="small" type='number' name="balance_from" variant="outlined" label="Balance from" onChange={(e)=>handleChange(e.target)} />
+                <TextField size="small" type='number' name="balance_to" variant="outlined" label="Balance to" onChange={(e)=>handleChange(e.target)} />
+                <TextField size="small" type='number' name="credit_cards" variant="outlined" label="Number of credit cards" onChange={(e)=>handleChange(e.target)} />
                 
-                <FormControl sx={{ m: 1, minWidth: 80 }}>
+                <FormControl sx={{ m: 1, minWidth: 80 }} className='mortgage'>
                     <InputLabel id="has-mortgage-label">Has a mortgage?</InputLabel>
                     <Select
                         labelId="has-mortgage-label"
@@ -78,17 +78,18 @@ const SearchBar = (props) => {
                 <br/>
                 Filter cities (hold "ctrl" to select multiple cities)
                 
-                <select className='dropdown' multiple name='cities[]' type='text' onChange={(e)=>handleChange(e.target)}>
-                    <option value='' disabled>---Select---</option>
-                    {
-                        (!cities) ? <></> :
-                            cities.map((city,i)=>
-                                <option key={i} value={city}>
-                                    {city}
-                                </option>
-                        )
-                    }
-                </select>
+                    <select className='dropdown' multiple name='cities[]' type='text' onChange={(e)=>handleChange(e.target)}>
+                        <option value='' disabled>---Select---</option>
+                        {
+                            (!cities) ? <></> :
+                                cities.map((city,i)=>
+                                    <option key={i} value={city}>
+                                        {city}
+                                    </option>
+                            )
+                        }
+                    </select>
+                
                 <input type='submit' value='Filter' />
                 <button onClick={clearFilter}>Clear</button>
             </form>
