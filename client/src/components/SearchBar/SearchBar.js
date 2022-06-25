@@ -1,16 +1,15 @@
 import React from 'react';
-import {useEffect, useState, useContext} from 'react';
+import {useState, useContext} from 'react';
 import {AppContext} from '../../App';
-import { Box, TextField, Select, MenuItem, Button, Typography, Paper, FormControl, InputLabel } from '@material-ui/core';
+import { TextField, Select, MenuItem, Typography, FormControl, InputLabel } from '@material-ui/core';
 
 const SearchBar = (props) => {
 
-    const {cities, filterParams, setFilterParams} = useContext(AppContext);
+    const {cities, setFilterParams} = useContext(AppContext);
     const [tempFilter, setTempFilter] = useState({});
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Submitted');
         setFilterParams(tempFilter);
     }
 
@@ -38,7 +37,6 @@ const SearchBar = (props) => {
             }
             
         }
-        console.log('currFilter:',currFilter,formField.value);
         setTempFilter(currFilter);
     }
 
@@ -46,7 +44,8 @@ const SearchBar = (props) => {
         let myForm = document.forms[0];
         myForm['balance_from'].value = '';
         myForm['balance_to'].value = '';
-        myForm['credit_cards'].value = '';
+        myForm['credit_cards_from'].value = '';
+        myForm['credit_cards_to'].value = '';
         myForm['has_mortgage'].value = '';
         myForm['cities[]'].value = '';
         setTempFilter({});
@@ -58,7 +57,8 @@ const SearchBar = (props) => {
             <form onSubmit={handleSubmit}>
                 <TextField size="small" type='number' name="balance_from" variant="outlined" label="Balance from" onChange={(e)=>handleChange(e.target)} />
                 <TextField size="small" type='number' name="balance_to" variant="outlined" label="Balance to" onChange={(e)=>handleChange(e.target)} />
-                <TextField size="small" type='number' name="credit_cards" variant="outlined" label="Number of credit cards" onChange={(e)=>handleChange(e.target)} />
+                <TextField size="small" type='number' name="credit_cards_from" variant="outlined" label="#Credit cards from" onChange={(e)=>handleChange(e.target)} />
+                <TextField size="small" type='number' name="credit_cards_to" variant="outlined" label="to" onChange={(e)=>handleChange(e.target)} />
                 
                 <FormControl sx={{ m: 1, minWidth: 80 }} className='mortgage'>
                     <InputLabel id="has-mortgage-label">Has a mortgage?</InputLabel>
@@ -69,6 +69,7 @@ const SearchBar = (props) => {
                         label="Mortgage"
                         onChange={(e)=>handleChange(e.target)}
                         autoWidth
+                        defaultValue=''
                     >
                         <MenuItem value='Yes'>Yes</MenuItem>
                         <MenuItem value='No'>No</MenuItem>

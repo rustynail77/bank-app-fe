@@ -1,5 +1,5 @@
 import React, { useState, useEffect, createContext } from 'react';
-import { CircularProgress, Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
+import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 import { useDispatch } from 'react-redux';
 
 import Posts from './components/Posts/Posts';
